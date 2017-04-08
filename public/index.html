@@ -67,7 +67,7 @@
                 data    : $(this).serialize(),
                 success : function( response ) {
                             if(response.includes('http')) {
-                                jQuery("b").html('<br><b style="word-wrap: break-word;" href="' + response + '" >' + response + '</a>')
+                                jQuery("b").html('<br><a style="word-wrap: break-word;" href="' + response + '" >' + response + '</a>')
                             } else {
                                 jQuery("b").html('<br>' + response)
                             }
