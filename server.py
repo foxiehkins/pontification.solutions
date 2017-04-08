@@ -69,7 +69,7 @@ class S(BaseHTTPRequestHandler):
             self.wfile.write(get_or_create_pontification(url, length))
         else:
             self.send_response(302)
-            self.send_header("Location", get_url(known_url + path[1:]))
+            self.send_header("Location", get_url(known_url + path[2:]))
             self.end_headers()
             self.wfile.write("")
 
