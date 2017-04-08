@@ -48,17 +48,22 @@ class S(BaseHTTPRequestHandler):
             qs = urlparse.parse_qs(tmp)
 
             if not 'url' in qs or not 'len' in qs:
-                self.wfile.write("FAIL")
+                self.wfile.write("Failed to generate pontificated link - have you checked what you've entered?")
                 return
             try:
-                url = str(qs['url'][0])
+                url = str(qs['url'][0]).lower()
+                print url
+                if not url.startswith('https://'):
+                    if not url.startswith('http://'):
+                        url = "http://" + url
+                print url
                 length = int(qs['len'][0])
             except:
-                self.wfile.write("FAIL")
+                self.wfile.write("Failed to generate pontificated link - have you checked what you've entered?")
                 return
 
-            if length > 500:
-                self.wfile.write("FAIL")
+            if length > 500 or length < 40:
+                self.wfile.write("Failed to generate pontificated link - have you checked what you've entered?")
                 return
 
             self.wfile.write(get_or_create_pontification(url, length))
