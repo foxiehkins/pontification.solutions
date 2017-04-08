@@ -51,7 +51,7 @@ class S(BaseHTTPRequestHandler):
                 self.wfile.write("Failed to generate pontificated link - have you checked what you've entered?")
                 return
             try:
-                url = str(qs['url'][0]).lower()
+                url = str(qs['url'][0]).lower().strip()
                 print url
                 if not url.startswith('https://'):
                     if not url.startswith('http://'):
